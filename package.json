@@ -1,0 +1,30 @@
+{
+  "name": "auth-catalog",
+  "version": "1.0.0",
+  "description": "test app for asta.mobi",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index"
+  },
+  "author": "Dmytro Bovkun",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^8.7.3",
+    "request": "^2.88.2",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3"
+  }
+}

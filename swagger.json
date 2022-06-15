@@ -1,0 +1,547 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a test server for test task Asta.mobi.",
+    "version": "1.0.0",
+    "title": "Test API",
+    "contact": {
+      "email": "im.dmitriy.bovkyn@gmail.com"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Operations about user"
+    },
+    {
+      "name": "category",
+      "description": "Access to categories"
+    },
+    {
+      "name": "product",
+      "description": "Operations about products"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Create user into the system",
+        "description": "",
+        "operationId": "registrationUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "operationId": "loginUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user authorization",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    },
+    "/category": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Returns categories",
+        "description": "Returns a list of categories",
+        "operationId": "getCategories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Create category",
+        "description": "",
+        "operationId": "createCategory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create category",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/category/{id}": {
+      "delete": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Delete category",
+        "description": "",
+        "operationId": "deleteCategory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "category"
+        ],
+        "summary": "update category",
+        "description": "",
+        "operationId": "updateCategory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The id that needs to be update",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Get products",
+        "description": "",
+        "operationId": "getProduct",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Create product",
+        "description": "",
+        "operationId": "createProduct",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create product",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/product/upload": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Upload product",
+        "description": "",
+        "operationId": "uploadProduct",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Upload product",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Get products",
+        "description": "",
+        "operationId": "getByCategoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Get products by category.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Update product",
+        "description": "",
+        "operationId": "updateProduct",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create category",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The id that needs to be update",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Delete product",
+        "description": "",
+        "operationId": "removeProduct",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product remove",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "name_en": {
+          "type": "string"
+        },
+        "name_ru": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Category"
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name_en": {
+          "type": "string"
+        },
+        "description_en": {
+          "type": "string"
+        },
+        "name_ru": {
+          "type": "string"
+        },
+        "description_ru": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "під замовлення",
+            "в наявності",
+            "немає в наявності"
+          ]
+        },
+        "price": {
+          "type": "integer"
+        },
+        "discount": {
+          "type": "integer"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "barcode": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Product"
+      }
+    }
+  }
+}
