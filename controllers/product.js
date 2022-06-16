@@ -240,9 +240,5 @@ module.exports.upload = async function(req, res) {
   })  
 }
 
-module.exports.testJest =  function(a, b) {
-
-  return a*b
-}
 
 
