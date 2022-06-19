@@ -1,6 +1,7 @@
 const db = require('../db')
 
-const {secret} = require('../configs.js');
+//const {secret} = require('../configs.js');
+const secret = process.env.secret;
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
