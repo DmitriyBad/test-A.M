@@ -1,8 +1,7 @@
-const passport = require('passport');//????
+const passport = require('passport');
 const db = require('../db')
 const XLSX = require("xlsx");
 const jwt = require('jsonwebtoken');
-//const {secret} = require('../configs.js');
 const secret = process.env.secret;
 const axios = require('axios');
 
